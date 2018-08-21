@@ -9,8 +9,8 @@ namespace RockPaperScissors
         Random random = new Random();
         string rPS;
         int computerMove;
-        List<int> playerWins;
-        List<int> computerWins;
+        List<int> playerWins = new List<int>();
+        List<int> computerWins = new List<int>();
 
         public Game()
         {
@@ -21,20 +21,18 @@ namespace RockPaperScissors
         }
         public void WelcomeMessage()
         {
-            Console.WriteLine("Welcome to Rock Paper Scissors.. \nThis is a best out of 5 \nChoose your move: Rock, Paper, Scissors");
+            Console.WriteLine("Welcome to Rock Paper Scissors Lizard Spock.. \nThis is a best out of 5. \nChoose a move: Rock Paper Scissors Lizard Spock ");
 
         }
 
         public void BestOfFive()
         {
-            playerWins = new List<int>();
-            computerWins = new List<int>();
-            while (playerWins.Count != 5 | computerWins.Count != 5 )
-            {
+           // while (playerWins.Count < 3 | computerWins.Count < 3 )
+            //{
                 ChooseMove();
                 ComputerGenerateMove();
                 winOrLose();
-            }
+           // }
         }
 
         public void ChooseMove()
@@ -45,8 +43,7 @@ namespace RockPaperScissors
 
         public void ComputerGenerateMove()
         {
-            computerMove = random.Next(1,4);
-            Console.WriteLine(computerMove);
+            computerMove = random.Next(1,6);
         }
 
 
@@ -62,12 +59,22 @@ namespace RockPaperScissors
                 else if (computerMove == 2)
                 {
                     Console.WriteLine("Winner! Computer picked Scissors");
-                    playerWins.Add(1);
-                    Console.WriteLine(playerWins.Count + "Playerwins");
+                    Console.WriteLine(playerWins.Count + "Player wins");
                 }
                 else if (computerMove == 3)
                 {
                     Console.WriteLine("Loser! Computer picked Paper");
+                    computerWins.Add(1);
+                    Console.WriteLine(playerWins.Count + " Computer Wins");
+                }
+                else if (computerMove == 4)
+                {
+                    Console.WriteLine("Winner! Computer picked Lizard");
+                    playerWins.Add(1);
+                }
+                else if (computerMove == 5)
+                {
+                    Console.WriteLine("Loser! Computer picked Spock");
                     computerWins.Add(1);
 
                 }
@@ -90,7 +97,17 @@ namespace RockPaperScissors
                 {
                     Console.WriteLine("Loser! Computer picked Scissors");
                     computerWins.Add(1);
+                }
+                else if (computerMove == 4)
+                {
+                    Console.WriteLine("Winner! Computer picked Spock");
+                    playerWins.Add(1);
 
+                }
+                else if (computerMove == 5)
+                {
+                    Console.WriteLine("Loser! Computer picked Lizard");
+                    computerWins.Add(1);
                 }
             }
 
@@ -112,16 +129,91 @@ namespace RockPaperScissors
                     computerWins.Add(1);
 
                 }
+                else if (computerMove == 4)
+                {
+                    Console.WriteLine("Winner! Computer picked Lizard");
+                    playerWins.Add(1);
+
+                }
+                else if (computerMove == 5)
+                {
+                    Console.WriteLine("Loser! Computer picked Spock");
+                    computerWins.Add(1);
+                }
+            }
+            else if (rPS == "LIZARD")
+            {
+                if (computerMove == 1)
+                {
+                    Console.WriteLine("Draw! Computer picked Lizard");
+                }
+                else if (computerMove == 2)
+                {
+                    Console.WriteLine("Winner! Computer picked Paper");
+                    playerWins.Add(1);
+                }
+                else if (computerMove == 3)
+                {
+                    Console.WriteLine("Loser! Computer picked Scissors");
+                    computerWins.Add(1);
+                }
+                else if (computerMove == 4)
+                {
+                    Console.WriteLine("Winner! Computer picked Spock");
+                    playerWins.Add(1);
+                }
+                else if (computerMove == 5)
+                {
+                    Console.WriteLine("Loser! Computer picked Rock");
+                    computerWins.Add(1);
+
+                }
+            }
+            else if (rPS == "SPOCK")
+            {
+                if (computerMove == 1)
+                {
+                    Console.WriteLine("Draw! Computer picked Spock");
+                }
+                else if (computerMove == 2)
+                {
+                    Console.WriteLine("Winner! Computer picked Scissors");
+                    playerWins.Add(1);
+                }
+                else if (computerMove == 3)
+                {
+                    Console.WriteLine("Loser! Computer picked Paper");
+                    computerWins.Add(1);
+
+                }
+                else if (computerMove == 4)
+                {
+                    Console.WriteLine("Winner! Computer picked Rock");
+                    playerWins.Add(1);
+
+                }
+                else if (computerMove == 5)
+                {
+                    Console.WriteLine("Loser! Computer picked Lizard");
+                    computerWins.Add(1);
+
+                }
             }
             else
             {
                 Console.WriteLine("Wrong output!");
             }
-            Console.WriteLine("Press Enter for the next round");
+            Console.WriteLine("Press Enter to continue");
             Console.ReadLine();
-            if (playerWins.Count < 5 || computerWins.Count < 5)
+            if (playerWins.Count < 3 || computerWins.Count < 3)
             {
-                Console.WriteLine("Rock, Paper or Scissors?");
+                Console.WriteLine("Rock, Paper, Scissors, Lizard or Spock?");
+            }
+            else
+            {
+                Console.WriteLine("Press enter to exit");
+                Console.ReadLine();
+                return;
             }
 
            
